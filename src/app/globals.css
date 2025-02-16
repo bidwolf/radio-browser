@@ -1,34 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  --background: #E9DFD0;
-  --foreground: #171717;
+  --color-background: oklch(90.75% 0.0229 78.21);
+  --color-foreground: oklch(20.46% 0 0);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #E9DFD0;
-    --foreground: #171717;
+    --color-background: oklch(90.75% 0.0229 78.21);
+    --color-foreground: oklch(20.46% 0 0);
   }
 }
 @theme {
   --font-header: "Pacifico", "serif";
   --font-body: "Lora", "serif";
-  --color-muted: "#B5A898";
-  --color-surface-darker: "#D6C8B8";
-  --color-surface-accent: "#C4B6A4";
-  --color-surface-lighter: "#F3EDE2";
-  --color-primary-900: "#364339";
-  --color-primary-500: "#556456";
-  --color-secondary-500: "#D35F35";
-  --color-tertiary-500: "#EBBB40";
-  --color-on-primary: "#E9DFD0";
-  --color-on-secondary: "#E9DFD0";
-  --color-on-tertiary: "#E9DFD0";
-  --color-on-surface: "#7A5F47";
+  --color-background: oklch(90.75% 0.0229 78.21);
+  --color-foreground: oklch(20.46% 0 0);
+  --color-muted: oklch(73.82% 0.0271 73.09);
+  --color-surface-darker: oklch(83.99% 0.0269 71.14);
+  --color-surface-accent: oklch(78.31% 0.0296 74.23);
+  --color-surface-lighter: oklch(94.78% 0.016 82.79);
+  --color-primary-900: oklch(36.79% 0.024 152.03);
+  --color-primary-500: oklch(48.61% 0.0287 146.94);
+  --color-secondary-500: oklch(62.26% 0.1572 39.64);
+  --color-tertiary-500: oklch(81.42% 0.1452 86.64);
+  --color-on-primary: oklch(90.75% 0.0229 78.21);
+  --color-on-secondary: oklch(90.75% 0.0229 78.21);
+  --color-on-tertiary: oklch(90.75% 0.0229 78.21);
+  --color-on-surface: oklch(50.65% 0.0502 62.95);
   }
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--color-foreground);
+  background: var(--color-background);
   font-family: var(--font-body);
 }
