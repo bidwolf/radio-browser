@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Lora, Pacifico } from "next/font/google";
+import { Lora, Pacifico } from "next/font/google";
 import "./globals.css";
+import SideBar from "@/components/sidebar";
 import Header from "@/components/header";
-
+import { Language } from "@/components/header/languageSelect";
+import { Country } from "@/components/header/countrySelect";
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
@@ -23,13 +25,38 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const fetchAvailableCountries = async (): Promise<Country[]> => {
+    const response = await fetch('http://de1.api.radio-browser.info/json/countries', {
+      cache: 'force-cache'
+    })
+    if (!response.ok) {
+      throw new Error('Failed to fetch available countries')
+    }
+    return response.json() as Promise<Country[]>
+  }
+  const fetchAvailableLanguages = async (): Promise<Language[]> => {
+    const response = await fetch('http://de1.api.radio-browser.info/json/languages', {
+      cache: 'force-cache'
+    })
+    if (!response.ok) {
+      throw new Error('Failed to fetch available languages')
+    }
+    return response.json() as Promise<Language[]>
+  }
+  const availableCountries = fetchAvailableCountries()
+  const availableLanguages = fetchAvailableLanguages()
   return (
     <html lang="en">
       <body
         className={`${lora.variable} ${pacifico.variable} antialiased`}
       >
-        <Header />
-        {children}
+        <div className="flex h-screen">
+          <SideBar />
+          <div className="flex-1">
+            <Header availableCountries={availableCountries} availableLanguages={availableLanguages} />
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
