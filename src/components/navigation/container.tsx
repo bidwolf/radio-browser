@@ -10,7 +10,7 @@ type ContainerProps = HtmlHTMLAttributes<HTMLHtmlElement> & {
   navClasses?: string;
   ulClasses?: string;
 }
-const defaultNavClasses = 'hidden md:col-span-2 md:flex md:flex-col md:gap-4 border-r-[0.5px] h-full border-muted'
+const defaultNavClasses = 'border-r-[0.5px] h-full border-muted'
 const defaultUlClasses = 'flex flex-col h-full w-full'
 export const Container = ({ children, navClasses, ulClasses }: ContainerProps) => {
   return (

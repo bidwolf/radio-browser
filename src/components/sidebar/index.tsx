@@ -7,31 +7,31 @@ import FavoriteIcon from "../icons/favorite"
 export default function SideBar() {
   const pathname = usePathname()
   return (
-    <Nav.container>
-      <Nav.header>
+    <Nav.Container navClasses="hidden md:col-span-5 lg:col-span-4 w-[17.5rem] xl:col-span-3 md:flex md:flex-col md:gap-4">
+      <Nav.Header>
         Radio Vibe
-      </Nav.header>
-      <Nav.item
+      </Nav.Header>
+      <Nav.Item
         href='/'
         icon={<HomeIcon />}
         isActive={pathname === "/"}
         label='Página inicial'
         testId="nav-home"
       />
-      <Nav.item
+      <Nav.Item
         href='/stations'
         icon={<TransmissionIcon />}
         isActive={pathname === "/stations"}
         label='Todas as estações'
         testId="nav-stations"
       />
-      <Nav.item
+      <Nav.Item
         href='/favorites'
         icon={<FavoriteIcon />}
         isActive={pathname === "/favorites"}
         label='Estações Favoritas'
         testId="nav-favorites"
       />
-    </Nav.container>
+    </Nav.Container>
   )
 }

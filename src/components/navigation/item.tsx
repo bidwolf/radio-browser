@@ -13,7 +13,7 @@ export type ItemProps = {
   testId?: string;
 }
 
-function Item({
+export function Item({
   href,
   isActive,
   icon,
@@ -49,5 +49,3 @@ function Item({
     </li>
   );
 }
-
-export default Item;
