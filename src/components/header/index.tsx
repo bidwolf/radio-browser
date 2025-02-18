@@ -24,6 +24,12 @@ export default function Header({ availableCountries, availableLanguages }: {
   const languages = use(availableLanguages)
   const { toggleSidebar } = useSidebar()
   const router = useRouter()
+  const handleSearch = () => {
+    const query = filterValue.trimEnd()
+    router.replace(
+      `/stations?filter=${filterType}&value=${query}&limit=10&offset=0`
+    )
+  }
   return (
     <header className="col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9 w-full" >
       <div className='grid grid-cols-12 place-items-center py-4 gap-2'>
@@ -71,13 +77,9 @@ export default function Header({ availableCountries, availableLanguages }: {
                 </Select>
               </div>
             </div>
-            <Button popoverTargetAction='hide' popoverTarget='search-popover' size='sm'
+            <Button size='sm'
               className='w-full'
-              onClick={() => {
-                router.replace(
-                  `/stations?filter=${filterType}&value=${filterValue.trimEnd()}&limit=10&offset=0`
-                )
-              }}
+              onClick={handleSearch}
             >
               Buscar
             </Button>

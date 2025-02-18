@@ -8,7 +8,6 @@ type CountryButtonProps = {
 }
 export const CountryButton = ({ country }: CountryButtonProps) => {
   const regionNames = new Intl.DisplayNames(['pt-BR'], { type: 'region' });
-  console.log(regionNames.of(country.toUpperCase()))
   const route = useRouter()
   return (
     <Button onClick={() => route.push(`/stations?filter=country&value=${country}`)} size="md" color="primary" className="w-full text-tertiary-500 flex items-center justify-center gap-2">
