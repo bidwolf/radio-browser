@@ -19,12 +19,12 @@ export default function SideBar({ className }: { className?: string }) {
       <Nav.Container navClasses={twMerge(
         "fixed md:static top-0 right-0 bg-background z-10 transition-transform w-[17.5rem] flex flex-col gap-4",
         showSidebar ? "translate-x-0 opacity-100" : "translate-x-full opacity-0",
-        "lg:translate-x-0 lg:opacity-100",
+        "md:translate-x-0 md:opacity-100",
         className
       )}>
         <button
           onClick={closeSidebar}
-          className="absolute top-1 left-1 flex items-center justify-center w-8 h-8 text-muted cursor-pointer lg:hidden">
+          className="absolute top-1 left-1 flex items-center justify-center w-8 h-8 text-muted cursor-pointer md:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
           </svg>

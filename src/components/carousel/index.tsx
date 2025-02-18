@@ -22,7 +22,7 @@ const Carousel: React.FC<CarouselProps> = ({ stations = [], className }) => {
   // }, [stations]);
 
   return (
-    <div className={twMerge("relative group overflow-hidden bg-tertiary-500 rounded-md border border-muted shadow", className)}>
+    <div className={twMerge("relative group overflow-hidden bg-tertiary-500 rounded-md border border-muted shadow w-full min-w-[18rem]", className)}>
       <div
         className="flex transition-transform duration-700"
         style={{ transform: `translateX(-${current * 100}%)` }}
@@ -68,13 +68,13 @@ const Carousel: React.FC<CarouselProps> = ({ stations = [], className }) => {
         onClick={() =>
           setCurrent((prev) => (prev - 1 + stations.length) % stations.length)
         }
-        className="hidden z-20 group-hover:block group-hover:absolute pr-1 left-4 top-1/2 transform -translate-y-1/2 bg-surface-lighter h-8 w-8 text-center rounded-full shadow-md hover:bg-surface-darker hover:cursor-pointer hover:text-on-surface"
+        className="absolute lg:hidden z-20 lg:group-hover:block lg:group-hover:absolute pr-1 left-4 top-1/2 transform -translate-y-1/2 bg-surface-lighter h-8 w-8 text-center rounded-full shadow-md hover:bg-surface-darker hover:cursor-pointer hover:text-on-surface"
       >
         &#9664;
       </button>
       <button
         onClick={() => setCurrent((prev) => (prev + 1) % stations.length)}
-        className="hidden z-20 group-hover:block group-hover:absolute pl-1 right-4 top-1/2 transform -translate-y-1/2 bg-surface-lighter h-8 w-8 text-center rounded-full shadow-md hover:bg-surface-darker hover:cursor-pointer hover:text-on-surface"
+        className="absolute lg:hidden z-20 lg:group-hover:block lg:group-hover:absolute pl-1 right-4 top-1/2 transform -translate-y-1/2 bg-surface-lighter h-8 w-8 text-center rounded-full shadow-md hover:bg-surface-darker hover:cursor-pointer hover:text-on-surface"
       >
         &#9654;
       </button>

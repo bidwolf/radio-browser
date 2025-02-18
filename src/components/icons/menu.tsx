@@ -8,9 +8,6 @@ export default function MenuIcon({
   ...props
 }: IconProps) {
   return (
-    <svg width={size} height={size} xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 -960 960 960"{...props}>
-      <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
-    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 -960 960 960" width={size} fill="#e8eaed"{...props}><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg>
   )
 }

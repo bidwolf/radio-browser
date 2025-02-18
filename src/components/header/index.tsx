@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 import { Country, FilterType, Language } from '@/types';
 import { Button } from '../button';
 import { useSidebar } from '../sidebar/sidebarContext';
+import Image from 'next/image';
 
 
 export default function Header({ availableCountries, availableLanguages, children }: {
@@ -27,7 +28,8 @@ export default function Header({ availableCountries, availableLanguages, childre
   return (
     <header className="col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9 w-full" >
       <div className='grid grid-cols-12 place-items-center py-4 gap-2'>
-        <button className='hover:opacity-90 hover:cursor-pointer col-span-9' onClick={() => router.push('/')} >
+        <button className='hover:opacity-90 hover:cursor-pointer col-span-9 flex items-center justify-center gap-2' onClick={() => router.push('/')} >
+          <Image src='/logo.png' alt='Radio Vibe' width={40} height={40} />
           <h1 className='font-header text-xl text-primary lg:text-4xl'>Radio Vibe</h1>
         </button>
         <button data-testid="search-button" popoverTarget='search-popover' className='cursor-pointer'>
@@ -84,7 +86,7 @@ export default function Header({ availableCountries, availableLanguages, childre
         </div>
         <MenuIcon
           role="button"
-          className='fill-primary-500 hover:opacity-90 rounded-full lg:hidden '
+          className='fill-primary-500 hover:opacity-90 rounded-full md:hidden '
           onClick={toggleSidebar}
         />
       </div>
