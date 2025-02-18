@@ -7,7 +7,7 @@ type CountryButtonProps = {
   country: string
 }
 export const CountryButton = ({ country }: CountryButtonProps) => {
-  let regionNames = new Intl.DisplayNames(['pt-BR'], { type: 'region' });
+  const regionNames = new Intl.DisplayNames(['pt-BR'], { type: 'region' });
   console.log(regionNames.of(country.toUpperCase()))
   const route = useRouter()
   return (

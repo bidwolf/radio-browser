@@ -4,7 +4,6 @@ type IconProps = {
   stroke?: string;
 } & React.SVGProps<SVGSVGElement>;
 export default function FavoriteStarIcon({
-  color = "#E8EAED",
   size = 24,
   ...props
 }: IconProps) {

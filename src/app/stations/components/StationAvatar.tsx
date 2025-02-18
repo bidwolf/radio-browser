@@ -12,7 +12,7 @@ export const StationAvatar = (props: { src: string, fallbackSrc: string, alt: st
       return;
     }
     set_imgSrc(props.src)
-  }, [props.src])
+  }, [props.src, props.fallbackSrc])
   return (
     <div className={twMerge(defaultAvatarClassNames, props.className)}>
       <Image src={imgSrc} alt={props.alt} width={36} height={36} onLoadingComplete={(result) => {

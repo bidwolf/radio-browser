@@ -4,7 +4,7 @@ type IconProps = {
   stroke?: string;
 } & React.SVGProps<SVGSVGElement>;
 export default function StopIcon({
-  color = "#E8EAED",
+
   size = 24,
   ...props
 }: IconProps) {

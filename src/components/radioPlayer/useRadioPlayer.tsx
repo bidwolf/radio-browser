@@ -15,7 +15,7 @@ interface RadioPlayerContextProps {
 
 const RadioPlayerContext = createContext<RadioPlayerContextProps | undefined>(undefined);
 export const RadioPlayerProvider = ({ children }: { children: ReactNode }) => {
-  const [audio, setAudio] = React.useState(new Audio());
+  const [audio] = React.useState(new Audio());
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [isLoading, setLoading] = React.useState(false);
   const [currentStation, setCurrentStation] = useState<RadioPlayerStation>({} as RadioPlayerStation);

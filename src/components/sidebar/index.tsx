@@ -1,6 +1,6 @@
 'use client'
 import { usePathname } from "next/navigation"
-import Nav from "../navigation"
+import * as Nav from "../navigation"
 import HomeIcon from "../icons/home"
 import TransmissionIcon from "../icons/transmision"
 import FavoriteIcon from "../icons/favorite"

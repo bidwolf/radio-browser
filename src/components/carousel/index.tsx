@@ -3,6 +3,7 @@ import { Station } from "@/types";
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useRadioPlayer } from "../radioPlayer/useRadioPlayer";
+import Image from "next/image";
 
 interface CarouselProps {
   stations?: Station[];
@@ -12,15 +13,6 @@ interface CarouselProps {
 const Carousel: React.FC<CarouselProps> = ({ stations = [], className }) => {
   const [current, setCurrent] = useState(0);
   const { changeStation, currentStation, toggleRadio } = useRadioPlayer()
-
-  // useEffect(() => {
-  //   if (stations.length === 0) return;
-  //   const interval = setInterval(() => {
-  //     setCurrent((prev) => (prev + 1) % stations.length);
-  //   }, 5000);
-  //   return () => clearInterval(interval);
-  // }, [stations]);
-
   return (
     <div className={twMerge("relative group overflow-hidden bg-tertiary-500 rounded-md border border-muted shadow w-full min-w-[18rem]", className)}>
       <div
@@ -41,9 +33,11 @@ const Carousel: React.FC<CarouselProps> = ({ stations = [], className }) => {
               votes: station.votes
             })
           }}>
-            <img
+            <Image
               src={station.favicon}
               alt={station.name}
+              width={192}
+              height={192}
               className="w-48 h-48 object-contain pointer-events-none"
             />
             <p className="mt-2 text-center select-none font-header">{station.name}</p>

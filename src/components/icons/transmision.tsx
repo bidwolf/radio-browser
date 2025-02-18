@@ -3,7 +3,7 @@ type IconProps = {
   size?: number;
 } & React.SVGProps<SVGSVGElement>;
 export default function TransmissionIcon({
-  color = "#E8EAED",
+
   size = 24,
   ...props
 }: IconProps) {

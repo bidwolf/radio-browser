@@ -1,6 +1,6 @@
 # Radio Vibe
 
-O Radio Oldschool é um projeto de rádio online com o intuito de trazer um pouco da experiência de ouvir rádio para dentro da internet.
+O Radio Vibe é um projeto de rádio online com o intuito de trazer um pouco da experiência de ouvir rádio para dentro da internet.
 Aqui você pode ver rádios do mundo todo, e como um toque, você pode checar o que tá rolando nas suas estações favoritas.
 
 ## Prototipagem

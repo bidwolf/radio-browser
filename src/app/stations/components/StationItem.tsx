@@ -18,7 +18,7 @@ export const StationItem: React.FC<StationItemProps> = (station) => {
   const [isFavorite, setIsFavorite] = useState(false)
   useEffect(() => {
     setIsFavorite(favorites.some(favorite => favorite.stationuuid === station.stationuuid))
-  }, [favorites])
+  }, [favorites, station.stationuuid])
   const handleChangeStation = () => {
     if (currentStation.url === station.url_resolved) {
       toggleRadio()

@@ -4,7 +4,6 @@ type IconProps = {
 } & React.SVGProps<SVGSVGElement>;
 export default function MenuIcon({
   size = 24,
-  fill = "#fff",
   ...props
 }: IconProps) {
   return (

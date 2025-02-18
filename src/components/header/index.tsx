@@ -14,10 +14,9 @@ import { useSidebar } from '../sidebar/sidebarContext';
 import Image from 'next/image';
 
 
-export default function Header({ availableCountries, availableLanguages, children }: {
+export default function Header({ availableCountries, availableLanguages }: {
   availableCountries: Promise<Country[]>,
   availableLanguages: Promise<Language[]>,
-  children?: React.ReactNode
 }) {
   const [filterType, setFilterType] = React.useState<FilterType>(FilterType.NAME)
   const [filterValue, setFilterValue] = React.useState<string>('')

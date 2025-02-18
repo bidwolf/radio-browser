@@ -17,7 +17,7 @@ export default async function Home() {
   const defaultLocale = 'en-US'
   const locale = match(languages, locales, defaultLocale)
   const country = extractCountryCode(locale)
-  let regionNames = new Intl.DisplayNames(['pt-BR'], { type: 'region' });
+  const regionNames = new Intl.DisplayNames(['pt-BR'], { type: 'region' });
   return (
     <main className="m-4 @container flex flex-col gap-8 items-center justify-center">
       <section className="flex flex-col gap-4 items-center justify-center w-full max-w-2xl">

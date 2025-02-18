@@ -1,7 +1,5 @@
 import React, { SVGProps } from "react";
-import { twMerge } from "tailwind-merge";
 
-const loadingClasses = "text-gray-200 animate-spin dark:text-gray-600 fill-primary-500";
 type SpinnerLoaderProps = SVGProps<SVGSVGElement> & {
   size?: 'sm' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl';
 }
