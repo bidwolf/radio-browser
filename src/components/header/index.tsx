@@ -4,24 +4,25 @@ import React, { use } from 'react';
 import MenuIcon from '../icons/menu';
 import SearchIcon from '../icons/search';
 import { Select } from '../select';
-import { Language, LanguageSelect } from '../header/languageSelect';
-import { Country, CountrySelect } from '../header/countrySelect';
+import { LanguageSelect } from '../header/languageSelect';
+import { CountrySelect } from '../header/countrySelect';
 import StyledInput from '../input';
 import { useRouter } from 'next/navigation';
-export enum FilterType {
-  COUNTRY = 'country',
-  LANGUAGE = 'language',
-  NAME = 'name'
-}
+import { Country, FilterType, Language } from '@/types';
+import { Button } from '../button';
+import { useSidebar } from '../sidebar/sidebarContext';
 
-export default function Header({ availableCountries, availableLanguages }: {
+
+export default function Header({ availableCountries, availableLanguages, children }: {
   availableCountries: Promise<Country[]>,
-  availableLanguages: Promise<Language[]>
+  availableLanguages: Promise<Language[]>,
+  children?: React.ReactNode
 }) {
   const [filterType, setFilterType] = React.useState<FilterType>(FilterType.NAME)
   const [filterValue, setFilterValue] = React.useState<string>('')
   const countries = use(availableCountries)
   const languages = use(availableLanguages)
+  const { toggleSidebar } = useSidebar()
   const router = useRouter()
   return (
     <header className="col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9 w-full" >
@@ -67,16 +68,23 @@ export default function Header({ availableCountries, availableLanguages }: {
                 </Select>
               </div>
             </div>
-            <button popoverTargetAction='hide' popoverTarget='search-popover'
+            <Button popoverTargetAction='hide' popoverTarget='search-popover' size='sm'
+              className='w-full'
               onClick={() => {
                 router.replace(
-                  `/stations?filter=${filterType}&value=${filterValue}&limit=10&offset=0`
+                  `/stations?filter=${filterType}&value=${filterValue.trimEnd()}&limit=10&offset=0`
                 )
               }}
-              className='w-full h-12 bg-primary-500 text-white rounded-lg font-semibold font-body'>Buscar</button>
+            >
+              Buscar
+            </Button>
           </div>
         </div>
-        <MenuIcon className='fill-primary-500 md:hidden' />
+        <MenuIcon
+          role="button"
+          className='fill-primary-500 hover:opacity-90 rounded-full lg:hidden '
+          onClick={toggleSidebar}
+        />
       </div>
     </header>
   );

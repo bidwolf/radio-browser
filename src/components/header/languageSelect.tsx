@@ -1,23 +1,19 @@
 'use client';
-import { use } from "react";
-import { Select } from "../select"
+import { Select, SelectProps } from "../select"
+import { Language } from "@/types";
 
-export type Language = {
-  name: string,
-  iso_639: string,
-  stationcount: string | number,
-}
+
 type StationSelectProps = {
   availableLanguages: Language[],
   onSelect: (stationLanguage: Language) => void,
-}
+} & Omit<SelectProps, 'onChange' | 'label' | 'onSelect'>
 
-export const LanguageSelect = ({ availableLanguages, onSelect }: StationSelectProps) => {
+export const LanguageSelect = ({ availableLanguages, onSelect, ...props }: StationSelectProps) => {
   return (
     <Select label="Escolha uma linguagem:" onChange={(e) => {
       const selectedLanguage = availableLanguages.find(station => station.name === e.target.value)
       if (selectedLanguage) onSelect(selectedLanguage)
-    }}>
+    }} {...props}>
       <option value="">
         Linguagem
       </option>

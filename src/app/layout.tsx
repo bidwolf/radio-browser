@@ -3,8 +3,11 @@ import { Lora, Pacifico } from "next/font/google";
 import "./globals.css";
 import SideBar from "@/components/sidebar";
 import Header from "@/components/header";
-import { Language } from "@/components/header/languageSelect";
-import { Country } from "@/components/header/countrySelect";
+import { fetchAvailableCountries, fetchAvailableLanguages } from "@/utils/api";
+import { RadioPlayerProvider } from "@/components/radioPlayer/useRadioPlayer";
+import RadioPlayer from "@/components/radioPlayer";
+import { SidebarProvider } from "@/components/sidebar/sidebarContext";
+import { FavoritesProvider } from "./favorites/components/FavoritesTable/FavoritesContext";
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
@@ -25,24 +28,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const fetchAvailableCountries = async (): Promise<Country[]> => {
-    const response = await fetch('http://de1.api.radio-browser.info/json/countries', {
-      cache: 'force-cache'
-    })
-    if (!response.ok) {
-      throw new Error('Failed to fetch available countries')
-    }
-    return response.json() as Promise<Country[]>
-  }
-  const fetchAvailableLanguages = async (): Promise<Language[]> => {
-    const response = await fetch('http://de1.api.radio-browser.info/json/languages', {
-      cache: 'force-cache'
-    })
-    if (!response.ok) {
-      throw new Error('Failed to fetch available languages')
-    }
-    return response.json() as Promise<Language[]>
-  }
+
   const availableCountries = fetchAvailableCountries()
   const availableLanguages = fetchAvailableLanguages()
   return (
@@ -50,13 +36,20 @@ export default function RootLayout({
       <body
         className={`${lora.variable} ${pacifico.variable} antialiased`}
       >
-        <div className="flex h-screen">
-          <SideBar />
-          <div className="flex-1">
-            <Header availableCountries={availableCountries} availableLanguages={availableLanguages} />
-            {children}
-          </div>
-        </div>
+        <SidebarProvider>
+          <FavoritesProvider>
+            <RadioPlayerProvider>
+              <div className="flex h-screen ">
+                <SideBar />
+                <div className="flex-1">
+                  <Header availableCountries={availableCountries} availableLanguages={availableLanguages} />
+                  {children}
+                </div>
+                <RadioPlayer />
+              </div>
+            </RadioPlayerProvider>
+          </FavoritesProvider>
+        </SidebarProvider>
       </body>
     </html>
   );

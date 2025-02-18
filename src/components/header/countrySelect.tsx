@@ -1,21 +1,18 @@
 'use client'
-import { Select } from "../select"
+import { Country } from "@/types"
+import { Select, SelectProps } from "../select"
 
-export type Country = {
-  name: string,
-  iso_639: string,
-  stationcount: string | number,
-}
+
 type StationSelectProps = {
   availableCountries: Country[],
   onSelect: (stationCountry: Country) => void,
-}
-export const CountrySelect = ({ availableCountries, onSelect }: StationSelectProps) => {
+} & Omit<SelectProps, 'onChange' | 'label' | 'onSelect'>
+export const CountrySelect = ({ availableCountries, onSelect, ...props }: StationSelectProps) => {
   return (
     <Select label="Escolha um país:" onChange={(e) => {
       const selectedCountry = availableCountries.find(station => station.name === e.target.value)
       if (selectedCountry) onSelect(selectedCountry)
-    }}>
+    }}  {...props}>
       <option value="">
         País
       </option>

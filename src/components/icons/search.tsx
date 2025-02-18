@@ -2,7 +2,7 @@
 type IconProps = {
   size?: number;
 } & React.SVGProps<SVGSVGElement>;
-export default function MenuIcon({
+export default function SearchIcon({
   color = "#E8EAED",
   size = 25,
   ...props
