@@ -28,6 +28,7 @@
   --color-on-secondary: oklch(90.75% 0.0229 78.21);
   --color-on-tertiary: oklch(90.75% 0.0229 78.21);
   --color-on-surface: oklch(50.65% 0.0502 62.95);
+  --container-8xl: 96rem;
   }
 body {
   color: var(--color-foreground);
