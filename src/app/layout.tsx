@@ -39,7 +39,7 @@ export default function RootLayout({
         <SidebarProvider>
           <FavoritesProvider>
             <RadioPlayerProvider>
-              <div className="flex h-screen ">
+              <div className="flex h-full">
                 <SideBar />
                 <div className="flex-1">
                   <Header availableCountries={availableCountries} availableLanguages={availableLanguages} />

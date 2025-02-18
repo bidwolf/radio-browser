@@ -2,7 +2,7 @@
 
 :root {
   --color-background: oklch(90.75% 0.0229 78.21);
-  --color-foreground: oklch(20.46% 0 0);
+  --color-foreground: oklch(37.15% 0 0);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,7 +15,7 @@
   --font-header: "Pacifico", "serif";
   --font-body: "Lora", "serif";
   --color-background: oklch(90.75% 0.0229 78.21);
-  --color-foreground: oklch(20.46% 0 0);
+  --color-foreground: oklch(37.15% 0 0);
   --color-muted: oklch(73.82% 0.0271 73.09);
   --color-surface-darker: oklch(83.99% 0.0269 71.14);
   --color-surface-accent: oklch(78.31% 0.0296 74.23);
