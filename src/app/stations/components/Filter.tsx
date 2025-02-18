@@ -65,7 +65,7 @@ export const Filter = ({
             )
           }} />
       }
-      <div className='flex flex-col gap-2'>
+      <div className='flex flex-col gap-2 w-full max-w-xs min-w-min'>
         <Select
           label='Selecione um filtro:'
           id="select-filter"

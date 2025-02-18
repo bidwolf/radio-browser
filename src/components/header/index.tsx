@@ -27,7 +27,9 @@ export default function Header({ availableCountries, availableLanguages, childre
   return (
     <header className="col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9 w-full" >
       <div className='grid grid-cols-12 place-items-center py-4 gap-2'>
-        <h1 className='font-header text-xl text-primary lg:text-4xl col-span-9'>Radio Vibe</h1>
+        <button className='hover:opacity-90 hover:cursor-pointer col-span-9' onClick={() => router.push('/')} >
+          <h1 className='font-header text-xl text-primary lg:text-4xl'>Radio Vibe</h1>
+        </button>
         <button data-testid="search-button" popoverTarget='search-popover' className='cursor-pointer'>
           <SearchIcon className='fill-secondary-500' />
         </button>

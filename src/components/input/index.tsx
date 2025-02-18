@@ -13,7 +13,7 @@ type inputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> & {
 }
 const StyledInput = ({ inputClasses, labelClasses, label, size = "sm", color = "primary", ...props }: inputProps) => {
   return (
-    <div>
+    <div className='w-full'>
       <label htmlFor={props.id} className={twMerge(defaultLabelClasses, labelClasses)}>
         {label}
       </label>

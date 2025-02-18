@@ -21,13 +21,13 @@ export const Select = ({ size = "sm", color = "primary", className, testId, labe
   const colorClasses = color === 'primary' ? primarySelectClasses : '';
   const disabledClasses = props.disabled ? disabledSelectClasses : '';
   return (
-    <div>
+    <div className="w-full">
       <label htmlFor={props.id} className={twMerge('text-xs font-body font-semibold', labelClass)}>{props.label}</label>
-      <div className='relative'>
+      <div className='relative w-full'>
         <select
-          {...props}
           className={twMerge(defaultClasses, sizeClasses, colorClasses, disabledClasses)}
           data-testid={testId}
+          {...props}
         >
           {props.children}
         </select>

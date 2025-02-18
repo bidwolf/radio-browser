@@ -1,8 +1,23 @@
-export default async function Home() {
+import { AllStationsButton } from "./_components/AllStationsButton";
+import { BrazilianButton } from "./_components/BrazilianButton";
+import { TopCountryStations } from "./_components/TopCountryCarousel";
+import { TopGlobalCarouselStations } from "./_components/TopGlobalCarousel";
 
+export default async function Home() {
   return (
-    <>
-      <h1>Pagina inicial</h1>
-    </>
+    <main className="m-4 @container flex flex-col gap-8 items-center justify-center">
+      <section className="flex flex-col gap-4 items-center justify-center w-full max-w-2xl">
+        <h3 className="font-body font-semibold text-2xl text-center text-on-surface">Suas escolhas</h3>
+        <p className="font-body font-light text-sm text-foreground text-pretty">Esqueceu aquela estação de notícias que ouviu pela manhã? Aqui estão suas escolhas mais comuns pra te ajudar a lembrar!</p>
+        <TopGlobalCarouselStations />
+        <AllStationsButton />
+      </section>
+      <section className="flex flex-col gap-4 items-center justify-center w-full max-w-2xl mb-28 mt-16">
+        <h3 className="font-body font-semibold text-2xl text-center text-on-surface">As mais tocadas do Brasil</h3>
+        <p className="font-body font-light text-sm text-foreground text-pretty">Pegou seu torresmo? Vem curtir as melhores rádios disponíveis aqui no brasil uai!</p>
+        <TopCountryStations />
+        <BrazilianButton />
+      </section>
+    </main>
   );
 }

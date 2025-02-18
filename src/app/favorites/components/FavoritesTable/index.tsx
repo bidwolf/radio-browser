@@ -38,9 +38,13 @@ export const FavoriteStations: React.FC<FavoriteStationsProps> = ({ filter, valu
                 <h3 className="text-sm text-center text-on-surface font-semibold font-body">Nenhuma estação encontrada no momento</h3>
               </div>
             ) :
-              filteredFavorites.map(station => (
-                <StationItem key={station.stationuuid} {...station} />
-              ))
+              (
+                <>
+                  {filteredFavorites.map(station => (
+                    <StationItem key={station.stationuuid} {...station} />
+                  ))}
+                </>
+              )
         }
       </div>
     </div>
