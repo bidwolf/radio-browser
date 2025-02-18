@@ -43,7 +43,7 @@ export const Filter = ({
   return (
     <div className="flex w-full gap-4 max-w-3xl justify-center items-center">
       {
-        filterType === FilterType.NAME && <StyledInput id="search-engine-input" label="Encontre uma estação" color="primary" placeholder="Sua próxima estação favorita" size="sm" labelClasses="sr-only" defaultValue={filterType === FilterType.NAME ? value : ''} onChange={(e) => handleSearch(e.target.value)} />
+        filterType === FilterType.NAME && <StyledInput id="search-engine-input" label="Encontre uma estação" color="primary" placeholder="Digite o nome da rádio" size="sm" labelClasses="sr-only" defaultValue={filterType === FilterType.NAME ? value : ''} onChange={(e) => handleSearch(e.target.value)} />
       }
       {
         filterType === FilterType.COUNTRY && <CountrySelect
