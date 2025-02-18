@@ -7,6 +7,7 @@ import { Select } from "@/components/select";
 import { CountrySelect } from "@/components/header/countrySelect";
 import { LanguageSelect } from "@/components/header/languageSelect";
 import { Country, Language } from "@/types";
+import { useDebouncedCallback } from "use-debounce";
 
 
 export const Filter = ({
@@ -23,7 +24,7 @@ export const Filter = ({
   const searchParams = useSearchParams()
   const [filterType, setFilterType] = React.useState<FilterType>(FilterType.NAME)
   const value = searchParams.get('value') || ''
-  const handleSearch = (query: string) => {
+  const handleSearch = useDebouncedCallback((query: string) => {
     const params = new URLSearchParams(searchParams)
     if (query) {
       params.set('filter', filterType)
@@ -34,7 +35,7 @@ export const Filter = ({
     }
     replace(`${pathname}?${params.toString()}`)
 
-  }
+  }, 500)
   useEffect(() => {
     if (searchParams.get('filter')) {
       setFilterType(searchParams.get('filter') as FilterType)
