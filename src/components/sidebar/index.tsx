@@ -17,8 +17,8 @@ export default function SideBar({ className }: { className?: string }) {
     <>
 
       <Nav.Container navClasses={twMerge(
-        "fixed md:static top-0 right-0 bg-background z-10 transition-transform w-[17.5rem] flex flex-col gap-4",
-        showSidebar ? "translate-x-0 opacity-100" : "translate-x-full opacity-0",
+        "fixed md:static h-full top-0 right-0 bg-background z-30 transition-transform w-[17.5rem] flex flex-col gap-4",
+        showSidebar ? "translate-x-0 opacity-100 show" : "translate-x-full opacity-0 ",
         "md:translate-x-0 md:opacity-100",
         className
       )}>

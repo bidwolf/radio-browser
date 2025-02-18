@@ -19,7 +19,8 @@ type FavoritesTableProps = {
 async function getStation(stationuuid: string) {
   const base = `http://de1.api.radio-browser.info/json/stations/byuuid/${stationuuid}`
   const response = await fetch(base, {
-    cache: 'force-cache'
+    cache: 'force-cache',
+    referrerPolicy: 'unsafe-url'
   })
   if (!response.ok) {
     throw new Error('Failed to fetch station data')
