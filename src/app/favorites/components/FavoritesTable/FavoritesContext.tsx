@@ -8,6 +8,7 @@ type FavoritesContextType = {
   removeFavorite: (stationuuid: string) => void,
   addFavorite: (station: Station) => void,
   toggleFavorite: (station: Station) => void,
+  fetchFavorites: () => void,
   isLoading: boolean
 }
 export const FavoritesContext = React.createContext<FavoritesContextType>({} as FavoritesContextType);
@@ -29,6 +30,19 @@ async function getStation(stationuuid: string) {
 export const FavoritesProvider = ({ children }: FavoritesTableProps) => {
   const [favorites, setFavorites] = useState<Station[]>([]);
   const [isLoading, setLoading] = useState(false);
+  const fetchFavorites = async () => {
+    setLoading(true)
+    async function getAllStations(stationuuids: string[]) {
+      const stations = await Promise.all(stationuuids.map(getStation))
+      setFavorites(stations.flat())
+    }
+    const rawFavorites = localStorage.getItem('favorites');
+    if (rawFavorites) {
+      const favoritesArray = rawFavorites.split(',').filter(f => f !== '');
+      getAllStations(favoritesArray)
+    }
+    setLoading(false)
+  }
   useEffect(() => {
     setLoading(true)
     async function getAllStations(stationuuids: string[]) {
@@ -71,7 +85,7 @@ export const FavoritesProvider = ({ children }: FavoritesTableProps) => {
     }
   }
   return (
-    <FavoritesContext.Provider value={{ favorites, removeFavorite, addFavorite, toggleFavorite, isLoading }}>
+    <FavoritesContext.Provider value={{ favorites, removeFavorite, addFavorite, toggleFavorite, isLoading, fetchFavorites }}>
       {children}
     </FavoritesContext.Provider>
   )

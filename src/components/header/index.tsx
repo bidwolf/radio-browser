@@ -29,6 +29,7 @@ export default function Header({ availableCountries, availableLanguages }: {
     router.replace(
       `/stations?filter=${filterType}&value=${query}&limit=10&offset=0`
     )
+
   }
   return (
     <header className="col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9 w-full" >

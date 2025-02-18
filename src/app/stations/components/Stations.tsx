@@ -19,7 +19,8 @@ const fetchStationData = async (query: string, offset: number = 0, filterType: F
       url = `${base}?limit=10&offset=${offset}`
   }
   const response = await fetch(url, {
-    cache: 'force-cache'
+    cache: 'force-cache',
+    referrerPolicy: 'unsafe-url'
   })
   if (!response.ok) {
     throw new Error('Failed to fetch station data')
