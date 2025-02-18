@@ -44,8 +44,9 @@ bun dev
 
 Abra [http://localhost:3000](http://localhost:3000) com o seu navegador para ver o resultado.
 
-### App Vercel
-
-Este projeto estará disponível para acesso diretamente pela vercel, e você pode acessar o resultado do projeto clicando no lobo abaixo:
-
-![Designer-3](https://github.com/user-attachments/assets/1c1cafcc-b7e0-4b97-a948-ac4069939ca1)
+>[!IMPORTANT]
+>### App Vercel
+>
+>Este projeto estará disponível para acesso diretamente pela vercel, e você pode acessar o resultado do projeto clicando ou lendo a imagem abaixo:
+>
+><a href="https://radio-browser-two.vercel.app/favorites"><img width="257" alt="Screenshot 2025-02-18 at 06 59 47" src="https://github.com/user-attachments/assets/84e7a49f-ac1e-4a09-980e-e40f95a5d6b6" /></a>
