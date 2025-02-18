@@ -39,7 +39,7 @@ export default function RootLayout({
         <SidebarProvider>
           <FavoritesProvider>
             <RadioPlayerProvider>
-              <div className="flex h-screen has-[.show]:bg-black">
+              <div className="flex h-screen">
                 <SideBar />
                 <div className="flex-1 h-full overflow-scroll">
                   <Header availableCountries={availableCountries} availableLanguages={availableLanguages} />
