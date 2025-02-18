@@ -1,17 +1,14 @@
 'use client'
-import React from 'react';
-import { useRadioPlayer } from './useRadioPlayer';
+import React, { use } from 'react';
 import PlayIcon from '../icons/playIcon';
 import StopIcon from '../icons/stopIcon';
 import { SpinnerLoader } from '../loading';
 import { StationAvatar } from '@/app/stations/components/StationAvatar';
 import { twMerge } from 'tailwind-merge';
+import { RadioPlayerContext } from './useRadioPlayer';
 
 const RadioPlayer = () => {
-  const { currentStation, toggleRadio, volume, changeVolume, isLoading, isPlaying } = useRadioPlayer();
-
-
-
+  const { currentStation, toggleRadio, volume, changeVolume, isLoading, isPlaying } = use(RadioPlayerContext)
   return (
     <div className={twMerge('z-20 fixed grid grid-cols-3 bottom-0 left-0 right-0 bg-surface-lighter p-4 shadow-lg border-t border-muted',
       isLoading ? 'opacity-50' : 'opacity-100',

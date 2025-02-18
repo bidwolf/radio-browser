@@ -1,9 +1,8 @@
 'use client';
-
 import React, { use, useEffect, useState } from "react";
 import Image from "next/image";
 import FavoriteIcon from "@/components/icons/favorite";
-import { useRadioPlayer } from "@/components/radioPlayer/useRadioPlayer";
+import { RadioPlayerContext } from "@/components/radioPlayer/useRadioPlayer";
 import { Station } from "@/types";
 import PlayIcon from "@/components/icons/playIcon";
 import { FavoriteButton } from "./FavoriteButton";
@@ -14,7 +13,7 @@ import { FavoritesContext } from "@/app/favorites/components/FavoritesTable/Favo
 type StationItemProps = Station;
 export const StationItem: React.FC<StationItemProps> = (station) => {
   const { favorites, toggleFavorite } = use(FavoritesContext)
-  const { currentStation, changeStation, toggleRadio, isPlaying } = useRadioPlayer()
+  const { currentStation, changeStation, toggleRadio, isPlaying } = use(RadioPlayerContext)
   const [isFavorite, setIsFavorite] = useState(false)
   useEffect(() => {
     setIsFavorite(favorites.some(favorite => favorite.stationuuid === station.stationuuid))

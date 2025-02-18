@@ -1,6 +1,6 @@
 'use client';
 import { Station } from '@/types';
-import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import React, { createContext, useState, ReactNode, useEffect } from 'react';
 
 type RadioPlayerStation = Pick<Station, 'url' | 'stationuuid' | 'favicon' | 'name' | 'votes'>;
 interface RadioPlayerContextProps {
@@ -13,22 +13,26 @@ interface RadioPlayerContextProps {
   volume: number;
 }
 
-const RadioPlayerContext = createContext<RadioPlayerContextProps | undefined>(undefined);
+export const RadioPlayerContext = createContext<RadioPlayerContextProps>({} as RadioPlayerContextProps);
 export const RadioPlayerProvider = ({ children }: { children: ReactNode }) => {
-  const [audio] = React.useState(new Audio());
+  const [audio] = useState(typeof Audio !== "undefined" && new Audio());
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [isLoading, setLoading] = React.useState(false);
   const [currentStation, setCurrentStation] = useState<RadioPlayerStation>({} as RadioPlayerStation);
   const playRadio = () => {
-    audio.play()
+    if (audio)
+      audio.play()
   }
   const stopRadio = () => {
-    audio.pause()
+    if (audio)
+      audio.pause()
   }
   const changeVolume = (volume: number) => {
-    audio.volume = volume;
+    if (audio)
+      audio.volume = volume;
   }
   const toggleRadio = () => {
+    if (!audio) return;
     if (audio.paused) {
       playRadio()
     } else {
@@ -36,6 +40,7 @@ export const RadioPlayerProvider = ({ children }: { children: ReactNode }) => {
     }
   }
   const changeStation = (station: RadioPlayerStation) => {
+    if (!audio) return;
     audio.src = station.url;
     setCurrentStation(station);
     const recentPlayed = localStorage.getItem('recentlyPlayed') || ''
@@ -48,6 +53,7 @@ export const RadioPlayerProvider = ({ children }: { children: ReactNode }) => {
     playRadio();
   }
   useEffect(() => {
+    if (!audio) return;
     audio.volume = 0.5;
     const load = () => {
       setLoading(true)
@@ -73,16 +79,8 @@ export const RadioPlayerProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [audio])
   return (
-    <RadioPlayerContext.Provider value={{ currentStation, changeStation, isLoading, isPlaying, toggleRadio, changeVolume, volume: audio.volume }}>
+    <RadioPlayerContext.Provider value={{ currentStation, changeStation, isLoading, isPlaying, toggleRadio, changeVolume, volume: audio ? audio.volume : 0 }}>
       {children}
     </RadioPlayerContext.Provider>
   );
-};
-
-export const useRadioPlayer = () => {
-  const context = useContext(RadioPlayerContext);
-  if (!context) {
-    throw new Error('O player só pode ser usado dentro do RadioPlayerProvider');
-  }
-  return context;
 };

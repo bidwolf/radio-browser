@@ -1,9 +1,9 @@
 'use client';
 import { Station } from "@/types";
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { useRadioPlayer } from "../radioPlayer/useRadioPlayer";
 import Image from "next/image";
+import { RadioPlayerContext } from "../radioPlayer/useRadioPlayer";
 
 interface CarouselProps {
   stations?: Station[];
@@ -12,7 +12,7 @@ interface CarouselProps {
 
 const Carousel: React.FC<CarouselProps> = ({ stations = [], className }) => {
   const [current, setCurrent] = useState(0);
-  const { changeStation, currentStation, toggleRadio } = useRadioPlayer()
+  const { changeStation, currentStation, toggleRadio } = use(RadioPlayerContext)
   return (
     <div className={twMerge("relative group overflow-hidden bg-tertiary-500 rounded-md border border-muted shadow w-full min-w-[18rem]", className)}>
       <div
