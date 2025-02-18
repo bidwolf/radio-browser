@@ -21,8 +21,12 @@ export default async function Home() {
   return (
     <main className="m-4 @container flex flex-col gap-8 items-center justify-center">
       <section className="flex flex-col gap-4 items-center justify-center w-full max-w-2xl">
-        <h3 className="font-body font-semibold text-2xl text-center text-on-surface">Suas escolhas</h3>
-        <p className="font-body font-light text-sm text-foreground text-pretty">Esqueceu aquela estação de notícias que ouviu pela manhã? Aqui estão suas escolhas mais comuns pra te ajudar a lembrar!</p>
+        <h3 className="font-body font-semibold text-2xl text-center text-on-surface">
+          As mais ouvidas no mundo
+        </h3>
+        <p className="font-body font-light text-sm text-foreground text-pretty">
+          As estações mais populares do mundo estão aqui! Confira as 3 estações mais ouvidas do momento!
+        </p>
         <TopGlobalCarouselStations />
         <AllStationsButton />
       </section>
